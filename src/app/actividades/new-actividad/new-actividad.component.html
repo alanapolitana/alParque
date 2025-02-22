@@ -1,0 +1,32 @@
+<div class="modal">
+  <div class="modal-content">
+    <h2>Nueva Actividad</h2>
+
+    <form (submit)="guardarActividad()">
+      <label for="nombre">Nombre:</label>
+      <input type="text" id="nombre" [(ngModel)]="actividad.nombre" name="nombre" required />
+
+      <label for="descripcion">Descripción:</label>
+      <textarea id="descripcion" [(ngModel)]="actividad.descripcion" name="descripcion" required></textarea>
+
+      <label for="instagram">Instagram:</label>
+      <input type="text" id="instagram" [(ngModel)]="actividad.instagram" name="instagram" />
+
+      <label for="website">Sitio Web:</label>
+      <input type="text" id="website" [(ngModel)]="actividad.website" name="website" />
+
+      <label for="parque">Parque:</label>
+      <select id="parque" [(ngModel)]="actividad.parque" name="parque" required>
+        <option *ngFor="let parque of parques" [value]="parque.id">{{ parque.nombre }}</option>
+      </select>
+
+      <label for="imagenes">Imágenes:</label>
+      <input type="file" id="imagenes" (change)="onFileChange($event)" multiple />
+
+      <button type="submit">Guardar</button>
+      <button type="button" (click)="closeModal.emit()">Cancelar</button>
+    </form>
+
+    <div *ngIf="error" class="error-message">{{ error }}</div>
+  </div>
+</div>

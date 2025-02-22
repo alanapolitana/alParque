@@ -1,0 +1,86 @@
+.imc-modal {
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .form-group input {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+  }
+  
+  .calculate-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .calculate-btn:hover {
+    background-color: #0056b3;
+  }
+  
+  .result {
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #007bff;
+    border-radius: 5px;
+    background-color: #e9f5ff;
+  }
+  
+
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .alert {
+    margin-bottom: 20px;
+  }
+  
+  .table {
+    margin-top: 20px;
+  }
+  
+  .export-btn {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin: 10px;
+  }
+  
+  .export-btn:hover {
+    background-color: #45a049;
+  }
+  
+  .view-chart-btn {
+    background-color: #008cba;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin: 10px;
+  }
+  
+  .view-chart-btn:hover {
+    background-color: #007bb5;
+  }
+  

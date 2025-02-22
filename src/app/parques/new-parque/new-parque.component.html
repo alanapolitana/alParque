@@ -1,0 +1,25 @@
+<div>
+  <h2>Registrar Nuevo Parque</h2>
+  <form id="upload-form" enctype="multipart/form-data" (ngSubmit)="onSubmit()" #uploadForm="ngForm">
+    <label for="nombre">Nombre del Parque:</label>
+    <input type="text" id="nombre" [(ngModel)]="nombre" name="nombre" required />
+
+    <label for="descripcion">Descripción:</label>
+    <textarea id="descripcion" [(ngModel)]="descripcion" name="descripcion" required></textarea>
+
+    <label for="ubicacion">Ubicación:</label>
+    <input type="text" id="ubicacion" [(ngModel)]="ubicacion" name="ubicacion" required />
+
+    <label for="image-file">Imágenes:</label>
+    <input type="file" id="image-file" (change)="onFileSelected($event)" accept="image/*" multiple/>
+
+    <div *ngIf="imagenesPreview.length > 0">
+      <h3>Vistas previas:</h3>
+      <div *ngFor="let preview of imagenesPreview">
+        <img [src]="preview" alt="Vista previa de la imagen" style="max-width: 200px; max-height: 200px;" />
+      </div>
+    </div>
+
+    <button type="submit">Registrar Parque</button>
+  </form>
+</div>

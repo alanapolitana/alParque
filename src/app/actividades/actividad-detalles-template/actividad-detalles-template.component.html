@@ -1,0 +1,23 @@
+<div *ngIf="actividadSeleccionada">
+  <div class="modal-overlay" (click)="closeModal()">
+    <div class="modal" (click)="$event.stopPropagation()">
+      <!-- Botón de Cierre -->
+      <button class="btn-close" (click)="closeModal()">×</button>
+
+      <h2>{{ actividadSeleccionada.nombre }}</h2>
+      <p>{{ actividadSeleccionada.descripcion }}</p>
+      <p>Instagram: <a [href]="actividadSeleccionada.instagram" target="_blank">{{ actividadSeleccionada.instagram }}</a></p>
+      
+      <!-- Asegurarse de que 'actividadSeleccionada.parque' existe -->
+      <p *ngIf="actividadSeleccionada.parque">Parque: {{ actividadSeleccionada.parque}}</p>
+
+      <div *ngIf="actividadSeleccionada.imagenes && actividadSeleccionada.imagenes.length > 0" class="carousel">
+        <div *ngFor="let imagen of actividadSeleccionada.imagenes" class="carousel-slide">
+          <img [src]="imagen" [alt]="actividadSeleccionada.nombre" />
+        </div>
+      </div>
+
+      <button class="btn-registrar" (click)="registrarActividad()">Registrar</button>
+    </div>
+  </div>
+</div>

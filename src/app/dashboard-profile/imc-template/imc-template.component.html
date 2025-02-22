@@ -1,0 +1,114 @@
+<div class="imc-modal">
+    <h2>Calculadora de IMC</h2>
+    <p>El Índice de Masa Corporal (IMC) es una medida que relaciona el peso y la altura para evaluar si tu peso es saludable.</p>
+
+    <form (ngSubmit)="saveIMC()">
+        <div class="form-group">
+            <label for="weight">Peso (kg):</label>
+            <input 
+                type="number" 
+                id="weight" 
+                [(ngModel)]="nuevoIMC.peso" 
+                name="peso" 
+                required
+                placeholder="Ej: 70">
+        </div>
+        <div class="form-group">
+            <label for="height">Altura (m):</label>
+            <input 
+                type="number" 
+                id="height" 
+                [(ngModel)]="nuevoIMC.altura" 
+                name="altura" 
+                step="0.01" 
+                required
+                placeholder="Ej: 1.75">
+        </div>
+
+        <!-- Botones para Calcular y Guardar -->
+        <button type="button" class="calculate-btn" (click)="calcularIMC(nuevoIMC.peso, nuevoIMC.altura)">Calcular IMC</button>
+        <button type="submit" class="save-btn" [disabled]="!nuevoIMC.imc">Guardar IMC</button>
+    </form>
+
+    <!-- Mostrar el IMC calculado y su clasificación -->
+    <div *ngIf="nuevoIMC.imc > 0" class="imc-result">
+        <h3>Tu IMC es: {{ nuevoIMC.imc | number: '1.2-2' }}</h3>
+        <p>{{ mensajeIMC }}</p>
+    </div>
+
+    <!-- Mostrar la explicación de la fórmula del IMC -->
+    <div *ngIf="explicacionIMC" class="imc-explanation">
+        <h4>Explicación de la fórmula:</h4>
+        <p>{{ explicacionIMC }}</p>
+    </div>
+
+    <!-- Mostrar notificaciones de éxito y error -->
+    <!-- Mostrar notificaciones de éxito y error -->
+<div *ngIf="notificationMessages.length > 0" class="notification-container">
+    <div *ngFor="let notification of notificationMessages" [ngClass]="{'error': notification.type === 'error', 'success': notification.type === 'success'}">
+        {{ notification.message }}
+        <button class="close-btn" (click)="clearNotification(notification)">X</button>
+    </div>
+</div>
+
+    <!-- Botón de Exportar -->
+    <button class="export-btn" (click)="exportarIMC()">Exportar IMC</button>
+
+    <!-- Botón de Ver Gráfica -->
+    <img id="grafica-imc" alt="Gráfica IMC" />
+
+    <button class="view-chart-btn" (click)="verGraficaIMC()">Ver Gráfica</button>
+
+    <!-- Historial de IMC -->
+    <div class="imc-list">
+        <h3>Historial de IMC</h3>
+        <ul>
+            <li *ngFor="let imc of imcList">
+                Usuario {{ imc.user }}: 
+                Peso: {{ imc.peso }} kg, 
+                Altura: {{ imc.altura }} m, 
+                IMC: {{ imc.imc | number: '1.2-2' }}
+            </li>
+        </ul>
+    </div>
+
+    <!-- Botón de Cancelar para cerrar el modal -->
+    <button class="cancel-btn" (click)="onCancel()">Cancelar</button>
+</div>
+
+<!-- Estilos para las notificaciones -->
+<style>
+  .notification-container {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+  }
+
+  .notification-container div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    color: white;
+  }
+
+  .error {
+    background-color: #f44336;
+  }
+
+  .success {
+    background-color: #4caf50;
+  }
+
+  .close-btn {
+    background: transparent;
+    border: none;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+  }
+</style>

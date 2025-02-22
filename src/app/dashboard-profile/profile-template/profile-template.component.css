@@ -1,0 +1,68 @@
+.profile-modal {
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  max-width: 500px;
+  margin: 0 auto;
+  font-family: Arial, sans-serif;
+}
+
+.profile-modal h2 {
+  margin-bottom: 20px;
+  font-size: 1.8rem;
+  color: #333;
+  text-align: center;
+}
+
+.profile-modal form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.profile-modal form label {
+  font-size: 1rem;
+  color: #555;
+}
+
+.profile-modal form input {
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease-in-out;
+}
+
+.profile-modal form input:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+.profile-modal form button {
+  padding: 12px;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.profile-modal form button[type="submit"] {
+  background: #007bff;
+  color: white;
+  border: none;
+}
+
+.profile-modal form button[type="submit"]:hover {
+  background: #0056b3;
+}
+
+.profile-modal form button.cancel {
+  background: #f8f9fa;
+  color: #333;
+  border: 1px solid #ddd;
+}
+
+.profile-modal form button.cancel:hover {
+  background: #e2e6ea;
+}

@@ -1,0 +1,22 @@
+<div class="profile-modal">
+  <h2>Editar Perfil</h2>
+  <form [formGroup]="profileForm" (ngSubmit)="onSave()">
+
+    <label>Nombre:</label>
+    <input type="text" formControlName="first_name" />
+
+    <label>Apellido:</label>
+    <input type="text" formControlName="last_name" />
+
+    <label>Dirección:</label>
+    <input type="text" formControlName="address" />
+
+    <label>Teléfono:</label>
+    <input type="text" formControlName="phone" />
+
+    <div style="display: flex; justify-content: space-between;">
+      <button type="button" class="cancel" (click)="onCancel()">Cancelar</button>
+      <button type="submit">Guardar Cambios</button>
+    </div>
+  </form>
+</div>

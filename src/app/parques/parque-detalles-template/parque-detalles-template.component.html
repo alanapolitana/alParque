@@ -1,0 +1,18 @@
+<p>parque-detalles-template works!</p>
+<div *ngIf="parqueSeleccionado">
+  <div class="modal">
+    <h2>{{ parqueSeleccionado.nombre }}</h2>
+    <p>{{ parqueSeleccionado.descripcion }}</p>
+    <p><strong>Ubicación:</strong> {{ parqueSeleccionado.ubicacion }}</p>
+
+    <div *ngIf="parqueSeleccionado.imagenes && parqueSeleccionado.imagenes.length > 0" class="carousel">
+      <div *ngFor="let imagen of parqueSeleccionado.imagenes" class="carousel-slide">
+        <img [src]="imagen" [alt]="parqueSeleccionado.nombre" />
+      </div>
+    </div>
+
+    <button (click)="cerrar()">Cerrar</button>
+  </div>
+</div>
+
+

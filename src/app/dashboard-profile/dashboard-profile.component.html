@@ -1,0 +1,50 @@
+<!-- <main>
+  <section class="table_section" *ngIf="!isAuthenticated">
+    <div class="user_banner">
+      <div class="user_data">
+        <div class="user_img" (click)="goToProfile()">
+        </div>
+     >
+        <span>ID: {{ user.id }}</span>
+        <span>Email: {{ user.email }}</span>
+        <span>Nombre: {{ user.first_name }}</span>
+        <span>Apellido: {{ user.last_name }}</span>
+        <span>Dirección: {{ user.address }}</span>
+        <span>Teléfono: {{ user.phone }}</span>
+      </div>
+      <button class="logout_btn" (click)="logout()">Cerrar sesión</button>
+      <button class="edit_profile_btn" (click)="goToProfile()">Editar tu perfil</button>
+    
+      <button class="imc_btn" (click)="openIMCModal()">Calcular IMC</button>
+    </div>
+  </section>
+</main> -->
+<main>
+  <section class="table_section" *ngIf="!isAuthenticated">
+    <div class="user_banner">
+      <div class="user_data">
+        <div class="user_img" (click)="triggerFileInput()">
+          <img [src]="user.image || defaultImage" alt="User Profile Picture">
+        </div>
+        <input #fileInput type="file" (change)="onFileSelected($event)" accept="image/*" hidden />
+        <span>ID: {{ user.id }}</span>
+        <span>Email: {{ user.email }}</span>
+        <span>Nombre: {{ user.first_name }}</span>
+        <span>Apellido: {{ user.last_name }}</span>
+        <span>Dirección: {{ user.address }}</span>
+        <span>Teléfono: {{ user.phone }}</span>
+      </div>
+      <button class="logout_btn" (click)="logout()">Cerrar sesión</button>
+      <button class="edit_profile_btn" (click)="goToProfile()">Editar tu perfil</button>
+      <button class="imc_btn" (click)="openIMCModal()">Calcular IMC</button>
+    </div>
+  </section>
+</main>
+
+<ng-template #profile>
+  <app-profile-template></app-profile-template>
+</ng-template>
+
+<ng-template #imc>
+  <app-imc-template></app-imc-template>
+</ng-template>

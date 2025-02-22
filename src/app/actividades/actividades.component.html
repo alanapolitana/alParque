@@ -1,0 +1,36 @@
+<div class="container">
+    <h2>Busca y explora Actividades cercanas</h2>
+  
+    <p>¿Deseas registrar una actividad?</p>
+    <button (click)="openActividadModal()">Registrar Nueva Actividad</button>
+  
+    <div class="actividades-list">
+      <div *ngFor="let actividad of actividades" class="actividad-item">
+        <h3>{{ actividad.nombre }}</h3>
+        <p>{{ actividad.descripcion }}</p>
+  
+        <!-- Mostrar solo la primera imagen de la actividad (si existe) -->
+        <div *ngIf="actividad.imagenes && actividad.imagenes.length > 0" class="imagenes-container">
+          <img [src]="sanitizeUrl(actividad.imagenes[0])" [alt]="actividad.nombre" class="actividad-image" />
+        </div>
+        
+        <!-- Botón para ver detalles de la actividad -->
+        <button (click)="verDetallesActividad(actividad)">Ver detalles</button>
+      </div>
+    </div>
+  
+    <app-actividad-detalles-template *ngIf="actividadSeleccionada"
+      [actividadSeleccionada]="actividadSeleccionada"></app-actividad-detalles-template>
+  
+    <!-- Modal para registrar nueva actividad -->
+    <ng-template #newActividad>
+      <app-new-actividad (closeModal)="openActividadModal()"></app-new-actividad>
+    </ng-template>
+  
+    <!-- Modal para ver detalles de la actividad -->
+    <ng-template #actividadDetalleTemplate>
+      <app-actividad-detalles-template *ngIf="actividadSeleccionada"
+          [actividadSeleccionada]="actividadSeleccionada"></app-actividad-detalles-template>
+    </ng-template>
+  </div>
+  

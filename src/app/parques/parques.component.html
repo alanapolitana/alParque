@@ -1,0 +1,32 @@
+<h1>Busca y explora Parques y plazas cercanos</h1>
+
+<p>¿Deseas registrar un parque?</p>
+<button (click)="openModal()">Registrar Nuevo Parque</button>
+
+<div class="parques-list">
+  <div *ngFor="let parque of parques" class="parque-item">
+    <h3>{{ parque.nombre }}</h3>
+    <p>{{ parque.descripcion }}</p>
+    <p><strong>Ubicación:</strong> {{ parque.ubicacion }}</p>
+
+    <!-- Mostrar solo la primera imagen del parque (si existe) -->
+    <div *ngIf="parque.imagenes && parque.imagenes.length > 0" class="imagenes-container">
+      <img [src]="sanitizeUrl(parque.imagenes[0])" 
+           [alt]="parque.nombre" 
+           class="parque-image" />
+    </div>
+
+    <!-- Botón para ver detalles del parque -->
+    <button (click)="verDetalles(parque)">Ver detalles</button>
+  </div>
+</div>
+
+<!-- Modal para registrar nuevo parque -->
+<ng-template #newParque>
+  <app-new-parque (closeModal)="closeModal()"></app-new-parque>
+</ng-template>
+
+<!-- Modal para ver detalles del parque -->
+<ng-template #parqueDetalleTemplate>
+  <app-parque-detalles-template [parqueSeleccionado]="parqueSeleccionado"></app-parque-detalles-template>
+</ng-template>
