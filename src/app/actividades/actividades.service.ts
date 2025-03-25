@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { LoginService } from '../services/auth/login.service';  // Asegúrate de importar el servicio de login
 
-const BASE_URL = 'http://localhost:8000/api/actividades/';
+const BASE_URL = 'https://alparque.onrender.com/api/actividades/';
 @Injectable({
   providedIn: 'root'
 })

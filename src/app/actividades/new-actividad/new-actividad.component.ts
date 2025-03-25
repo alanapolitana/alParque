@@ -43,7 +43,7 @@ export class NewActividadComponent implements OnInit {
       'Authorization': `Bearer ${token}`
     });
 
-    this.http.get<any[]>('http://localhost:8000/api/parques/', { headers }).subscribe(
+    this.http.get<any[]>('https://alparque.onrender.com/api/parques/', { headers }).subscribe(
       (data) => {
         this.parques = data;
       },
@@ -102,7 +102,7 @@ export class NewActividadComponent implements OnInit {
       headers = headers.set('Authorization', `Bearer ${token}`);
     }
 
-    this.http.post('http://localhost:8000/api/actividades/', formData, { headers }).subscribe(
+    this.http.post('https://alparque.onrender.com/api/actividades/', formData, { headers }).subscribe(
       (response) => {
         console.log('Actividad guardada:', response);
         this.closeModal();

@@ -1,20 +1,10 @@
-/* import { Injectable } from '@angular/core';
-
-@Injectable({
-  providedIn: 'root'
-})
-export class ParquesServicesService {
-
-  constructor() { }
-  private apiUrl = 'http://localhost:8000/api/parques/'
-}
- */import { Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { LoginService } from '../services/auth/login.service';  // Asegúrate de importar el servicio de login
 
 // Asegúrate de que esta URL corresponda a tu endpoint de Django
-const API_URL = 'http://localhost:8000/api/parques/'; // Cambia esta URL a la correcta
+const API_URL = 'https://alparque.onrender.com/api/parques/'; // Cambia esta URL a la correcta
 
 @Injectable({
   providedIn: 'root'

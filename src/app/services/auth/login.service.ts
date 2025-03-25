@@ -9,7 +9,7 @@ import { jwtDecode } from 'jwt-decode';
   providedIn: 'root'
 })
 export class LoginService {
-  private apiUrl = 'http://localhost:8000/api/login/';
+  private apiUrl = 'https://alparque.onrender.com/api/login/';
   private token: string = '';
   private refreshToken: string = '';
   currentUserLogin: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
@@ -43,7 +43,7 @@ export class LoginService {
 
   methodlogout(): void {
     if (this.refreshToken) {
-      this.http.post('http://localhost:8000/api/logout/', { user: this.refreshToken }).subscribe({
+      this.http.post('https://alparque.onrender.com/api/logout/', { user: this.refreshToken }).subscribe({
         next: (response) => {
           console.log('Logout exitoso:', response);
         },

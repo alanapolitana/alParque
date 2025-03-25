@@ -7,7 +7,7 @@ import { LoginService } from '../services/auth/login.service';
   providedIn: 'root'
 })
 export class ActividadUsuarioService {
-  private apiUrl = 'http://localhost:8000/api/actividad-usuarios/';
+  private apiUrl = 'https://alparque.onrender.com/api/actividad-usuarios/';
 
   constructor(private http: HttpClient, private loginService: LoginService) {}
 
@@ -26,7 +26,7 @@ getActividadesUsuarios(): Observable<any> {
 
   getActividadesPorUsuario(id: number): Observable<any> {
     // Construcción correcta de la URL con el parámetro `id`
-    const url = `http://localhost:8000/api/actividad-usuarios/${id}/`;  // Aquí pasamos el id dinámico
+    const url = `https://alparque.onrender.com/api/actividad-usuarios/${id}/`;  // Aquí pasamos el id dinámico
     console.log(`Fetching: ${url}`);
     
     // Si tienes un token de autenticación, lo agregas en los headers
