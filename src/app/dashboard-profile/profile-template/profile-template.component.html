@@ -8,12 +8,17 @@
     <label>Apellido:</label>
     <input type="text" formControlName="last_name" />
 
-    <label>Dirección:</label>
-    <input type="text" formControlName="address" />
 
     <label>Teléfono:</label>
     <input type="text" formControlName="phone" />
-
+    <label>Sexo:</label>
+    <select formControlName="gender">
+      <option value="">Seleccione...</option>
+      <option value="Masculino">Masculino</option>
+      <option value="Femenino">Femenino</option>
+      <option value="Otro">Otro</option>
+    </select>
+    
     <div style="display: flex; justify-content: space-between;">
       <button type="button" class="cancel" (click)="onCancel()">Cancelar</button>
       <button type="submit">Guardar Cambios</button>

@@ -1,0 +1,116 @@
+/* Contenedor principal del aside */
+.asidepublicitario {
+    z-index: -10000; /* Asegura que el aside esté por encima del footer */
+
+    position: fixed;
+    top: 50%;
+    right: 0px;
+    transform: translateY(-50%);
+
+    max-width: 210px; /* Asegura un tamaño mínimo */
+    max-height: 90vh; /* Evita que sea más grande que la pantalla */
+    background: rgba(20, 20, 20, 0.95);
+    color: white;
+ 
+    border-radius: 15px 0 0 15px;
+    box-shadow: -4px 0 10px rgba(0, 0, 0, 0.5);
+    transition: right 0.4s ease-in-out, box-shadow 0.3s;
+    z-index: 10000;
+    overflow-y: auto; /* Permite hacer scroll si hay mucho contenido */
+}
+
+/* Mostrar aside cuando está activo */
+.asidepublicitario.active {
+    right: 0;
+}
+
+/* Botón flotante de apertura/cierre */
+.toggle-btn {
+    position: absolute;
+    left: -50px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #ff9800;
+    color: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    cursor: pointer;
+    transition: transform 0.3s, background 0.3s;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.toggle-btn:hover {
+    background: #ffa726;
+    transform: scale(1.1);
+}
+
+/* Contenedor de anuncios */
+.ads-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+/* Estilos de cada anuncio */
+.ad {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    transition: transform 0.3s, background 0.3s;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+.ad:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-5px);
+}
+
+.ad img {
+    height: 120px;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.ad:hover img {
+    transform: scale(1.05);
+}
+
+/* Íconos sociales */
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.social-icons a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.social-icons a:hover {
+    transform: scale(1.2);
+    background: rgba(255, 255, 255, 0.5);
+}
+
+.social-icons img {
+    width: 25px;
+    height: 25px;
+}
+

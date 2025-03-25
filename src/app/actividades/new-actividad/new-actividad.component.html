@@ -24,7 +24,7 @@
       <input type="file" id="imagenes" (change)="onFileChange($event)" multiple />
 
       <button type="submit">Guardar</button>
-      <button type="button" (click)="closeModal.emit()">Cancelar</button>
+      <button type="button" (click)="closeModal()">Cancelar</button>
     </form>
 
     <div *ngIf="error" class="error-message">{{ error }}</div>

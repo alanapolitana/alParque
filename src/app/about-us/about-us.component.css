@@ -1,23 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    height: auto;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: linear-gradient(135deg, #2c3e50, #27ae60);
+    animation: bgAnimation 10s infinite alternate;
+}
+
+@keyframes bgAnimation {
+    0% { background: linear-gradient(135deg, #2c3e50, #27ae60); }
+    100% { background: linear-gradient(135deg, #27ae60, #2c3e50); }
+}
 
 .container {
     background: white;
-
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-    max-width: 600px;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
+    max-width: 500px;
     text-align: center;
+    transition: transform 0.3s ease-in-out;
+}
+
+.container:hover {
+    transform: scale(1.05);
 }
 
 h1 {
     color: #2c3e50;
+    font-size: 2rem;
+    margin-bottom: 15px;
 }
 
 p {
     color: #555;
     line-height: 1.6;
+    font-size: 1.1rem;
 }
 
 .highlight {
     color: #27ae60;
     font-weight: bold;
+}
+
+/* Botón */
+.cta-btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 25px;
+    background: #27ae60;
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.cta-btn:hover {
+    background: #219150;
+    transform: scale(1.1);
 }

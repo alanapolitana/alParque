@@ -1,4 +1,5 @@
 export interface Actividad {
+  id: number;
   nombre: string;
   descripcion: string;
   imagenes: string[];
@@ -9,4 +10,5 @@ export interface Actividad {
   comentarios: string;
   parque: number | null;
   administrador: boolean;
+
 }

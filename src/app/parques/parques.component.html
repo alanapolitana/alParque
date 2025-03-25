@@ -1,7 +1,9 @@
+<div class="container">
 <h1>Busca y explora Parques y plazas cercanos</h1>
 
 <p>¿Deseas registrar un parque?</p>
 <button (click)="openModal()">Registrar Nuevo Parque</button>
+<br>
 
 <div class="parques-list">
   <div *ngFor="let parque of parques" class="parque-item">
@@ -20,7 +22,7 @@
     <button (click)="verDetalles(parque)">Ver detalles</button>
   </div>
 </div>
-
+</div>
 <!-- Modal para registrar nuevo parque -->
 <ng-template #newParque>
   <app-new-parque (closeModal)="closeModal()"></app-new-parque>

@@ -6,7 +6,7 @@ main {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: url(../../assets/image.png);
+    background: url('https://res.cloudinary.com/dhufclese/image/upload/v1739460069/sarmientoturismo3_cuu1vq.jpg');
     background-size: cover;
     background-attachment: fixed;
 }
@@ -17,7 +17,7 @@ main {
     background: #1e1e1e;
     margin: auto;
     box-shadow: 7px 13px 37px #000;
-    border-top: 20px solid #9a1515;
+    border-top: 20px solid #159a2d;
     color: #ffffff;
     padding: 5rem;
 /*     margin-top: 2.5rem;
@@ -52,7 +52,7 @@ main {
     margin-bottom: 30px;
     border-bottom: 1px solid;
     font-size: 2rem;
-    color:#fcd69e ;
+    color:#c2fc9e ;
 }
 
 .controles{
@@ -67,7 +67,7 @@ main {
 .botom{ 
     width: 100%;
     height: 40px;
-    background: #f2b251;
+    background: #51f251;
     border: none;
     color: #1e1e1e;
     margin-bottom: 16px;
@@ -141,6 +141,8 @@ main {
 
 .link{
     cursor: pointer;
+    color:#ce2d2d;
+
 }
 
 
@@ -154,9 +156,9 @@ main {
 .title_login::before {
     content: "";
     display: block;
-    width: 180px; /* Ajusta el tamaño */
+    min-width: 800px;
     height: 180px;
-    background-image: url('../../assets/image.png');
+    background-image: url('https://res.cloudinary.com/dhufclese/image/upload/v1742853989/alparquelogo2_xm7qko.jpg');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;

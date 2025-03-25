@@ -4,66 +4,13 @@ body {
     margin: 0;
     padding: 0;
     background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
 
-/* Estilos para el formulario */
-.user_banner {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    text-align: center;
-}
-
-.user_data {
-    margin-bottom: 20px;
-}
-
-.user_img img {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    cursor: pointer;
-}
-
-.logout_btn, .edit_profile_btn {
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-.logout_btn:hover, .edit_profile_btn:hover {
-    background-color: #3e8e41;
-}
-
-/* Estilos para el modal (ajusta según tu componente de modal) */
-.modal-content {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.user_img {
-    background-image: url('../../assets/image.png');
-    background-size: cover;
-    background-position: center;
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Agrega una sombra */
-    transition: transform 0.3s ease-in-out; /* Agrega una transición */
-    cursor: pointer; 
-}
-
-.user_img:hover {
-    transform: scale(1.1); /* Aumenta el tamaño al pasar el mouse */
-}
-
-/* Estilos para el formulario */
+/* Banner de usuario */
 .user_banner {
     background-color: #fff;
     padding: 20px;
@@ -86,77 +33,7 @@ body {
     color: #333;
 }
 
-.user_img img {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    cursor: pointer;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease-in-out;
-}
-
-.user_img:hover img {
-    transform: scale(1.1);
-}
-
-.logout_btn, .edit_profile_btn {
-    background-color: #4CAF50;
-    color: white;
-    padding: 12px 24px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin: 10px;
-    transition: background-color 0.3s ease;
-}
-
-.logout_btn:hover, .edit_profile_btn:hover {
-    background-color: #3e8e41;
-}
-.imc_btn {
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 10px;
-  }
-  
-  .imc_btn:hover {
-    background-color: #45a049;
-  }
-  
-
-  body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f0f0f0;
-}
-
-.user_banner {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    max-width: 600px;
-    margin: 20px auto;
-}
-
-.user_data {
-    margin-bottom: 20px;
-    text-align: left;
-}
-
-.user_data span {
-    display: block;
-    margin-bottom: 10px;
-    font-size: 16px;
-    color: #333;
-}
-
+/* Imagen de usuario */
 .user_img {
     width: 120px;
     height: 120px;
@@ -178,17 +55,56 @@ body {
     transform: scale(1.1);
 }
 
-.logout_btn, .edit_profile_btn, .imc_btn {
-    background-color: #4CAF50;
-    color: white;
+/* Botones */
+button {
     padding: 12px 24px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     margin: 10px;
     transition: background-color 0.3s ease;
+    color: white;
 }
 
-.logout_btn:hover, .edit_profile_btn:hover, .imc_btn:hover {
-    background-color: #3e8e41;
+.edit_profile_btn, .imc_btn {
+    background-color: #4CAF50;
+}
+
+.logout_btn {
+    background-color: #d9534f;
+}
+
+button:hover {
+    filter: brightness(90%);
+}
+
+/* Tarjetas */
+.row-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.card {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    flex: 1;
+    min-width: 200px;
+}
+
+.card h3 {
+    margin-bottom: 10px;
+}
+
+.card button {
+    background: #007bff;
+}
+
+.card button:hover {
+    background: #0056b3;
 }
