@@ -1,33 +1,49 @@
 import { Component, ViewChild, TemplateRef, OnInit } from '@angular/core';
-import { ActividadesService } from './actividades-service.service';
+import { ActividadesService } from './actividades.service';
 import { Actividad } from './actividad.model';
 import { CommonModule } from '@angular/common';
 import { ActividadDetallesTemplateComponent } from "./actividad-detalles-template/actividad-detalles-template.component";
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { NewActividadComponent } from "./new-actividad/new-actividad.component";
 import { ModalService } from '../modal/modal.service';
+import { ParqueService } from '../parques/parques-services.service'; // Importa el servicio de parques
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-actividades',
   templateUrl: './actividades.component.html',
   styleUrls: ['./actividades.component.css'],
-  imports: [CommonModule, ActividadDetallesTemplateComponent, NewActividadComponent]
+  imports: [CommonModule, ActividadDetallesTemplateComponent, NewActividadComponent,FormsModule]
 })
 export class ActividadesComponent implements OnInit {
   actividades: Actividad[] = [];
-  actividadSeleccionada!: Actividad;
+  parques: any[] = []; // Lista de parques
+  parqueSeleccionado: number | null = null; // ID del parque seleccionado
+  actividadSeleccionada: Actividad | null = null;
+
 
   @ViewChild('newActividad', { static: true }) newActividadTemplate!: TemplateRef<any>;
   @ViewChild('actividadDetalleTemplate', { static: true }) actividadDetalleTemplate!: TemplateRef<any>;
 
   constructor(
     private actividadesService: ActividadesService,
+    private parqueService: ParqueService,
     private modalService: ModalService,
     private sanitizer: DomSanitizer
   ) {}
 
   ngOnInit(): void {
+    this.cargarParques();
     this.cargarActividades();
+  }
+
+  cargarParques(): void {
+    this.parqueService.getParques().subscribe(
+      (data) => {
+        this.parques = data;
+      },
+      (error) => console.error('Error al cargar parques:', error)
+    );
   }
 
   cargarActividades(): void {
@@ -40,6 +56,24 @@ export class ActividadesComponent implements OnInit {
       },
       (error) => console.error('Error al cargar actividades:', error)
     );
+  }
+
+  // Método para cargar actividades filtradas por parque
+  cargarActividadesFiltradas(parqueId: number | null): void {
+    this.actividadesService.getActividadesFiltradas(parqueId).subscribe(
+      (data) => {
+        this.actividades = data.map((actividad: any) => ({
+          ...actividad,
+          imagenes: this.parseImagenes(actividad.imagenes) // Parseamos las imágenes
+        }));
+      },
+      (error) => console.error('Error al cargar actividades:', error)
+    );
+  }
+
+  // Método para manejar el cambio de parque en el filtro
+  onParqueChange(): void {
+    this.cargarActividadesFiltradas(this.parqueSeleccionado);
   }
 
   // Sanitiza una URL para usarla en el src de una imagen
@@ -61,38 +95,23 @@ export class ActividadesComponent implements OnInit {
     return [];
   }
 
-  openActividadModal(): void {
+  // Método para abrir el modal
+  openNewActividadModal(): void {
     this.modalService.component = this.newActividadTemplate;
     this.modalService.openModal();
   }
 
-  closeActividadModal(): void {
+  // Si deseas cerrar el modal desde el componente padre, lo puedes hacer aquí
+  closeNewActividadModal(): void {
     this.modalService.closeModal();
   }
 
   verDetallesActividad(actividad: Actividad): void {
     this.actividadSeleccionada = actividad;
-    this.modalService.component = this.actividadDetalleTemplate;
-    this.modalService.openModal();
   }
   
-  // Método para manejar la selección de archivos de imágenes
-  onFileSelected(event: any): void {
-    const files: File[] = Array.from(event.target.files);
-
-    if (!this.actividadSeleccionada.imagenes) {
-      this.actividadSeleccionada.imagenes = [];
-    }
-
-    // Convertir cada archivo seleccionado a base64 y almacenarlo como string
-    files.forEach((file: File) => {
-      const reader = new FileReader();
-      reader.onload = () => {
-        if (reader.result) {
-          this.actividadSeleccionada.imagenes.push(reader.result as string);
-        }
-      };
-      reader.readAsDataURL(file);
-    });
+  closeActividadModal(): void {
+    this.actividadSeleccionada = null;
   }
+  
 }

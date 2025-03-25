@@ -18,8 +18,8 @@
   padding: 40px 50px;
   border-radius: 12px;
   box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
-  max-width: 80%;
-  width: 600px;
+  max-width: 90%; /* Aumentar el ancho máximo */
+  width: 800px; /* Establecer un ancho fijo más grande */
   text-align: center;
   animation: fadeIn 0.3s ease-out;
   display: flex;
@@ -27,6 +27,8 @@
   justify-content: center;
   align-items: center;
   transform: translateY(-10%);
+  max-height: 90%; /* Asegurar que no sobrepase el 90% de la altura de la pantalla */
+  overflow-y: auto; /* Hacer que el contenido se pueda desplazar si es necesario */
 }
 
 /* Animación de desvanecimiento del modal */
@@ -104,10 +106,11 @@
 }
 
 /* Responsividad */
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   .modal {
     padding: 20px;
     max-width: 90%;
+    width: 100%; /* En pantallas más pequeñas, hacer el modal más fluido */
   }
 
   .modal h2 {
@@ -121,4 +124,68 @@
   .carousel-slide img {
     height: 150px; /* Ajustar tamaño de las imágenes en pantallas pequeñas */
   }
+}
+
+@media (max-width: 600px) {
+  .modal {
+    max-width: 100%;
+    width: 100%; /* Hacer el modal más fluido en pantallas muy pequeñas */
+  }
+}
+
+/* Estilos para el switch */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 34px;
+  height: 20px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 12px;
+  width: 12px;
+  border-radius: 50%;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;  /* Pelotita blanca por defecto */
+  transition: 0.4s;
+}
+
+/* Cuando el switch está activado (true) */
+input:checked + .slider {
+  background-color: #4caf50; /* Fondo verde cuando está activado */
+}
+
+input:checked + .slider:before {
+  transform: translateX(14px); /* Desplaza la pelotita */
+  background-color: #4caf50; /* Pelotita verde cuando está activado */
+}
+
+/* Estilo cuando el switch está deshabilitado */
+input:disabled + .slider {
+  background-color: #e0e0e0;
+}
+
+input:disabled + .slider:before {
+  background-color: #bbb;
 }

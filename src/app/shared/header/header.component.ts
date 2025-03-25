@@ -1,7 +1,6 @@
 import { Component, OnDestroy, OnInit} from '@angular/core';
 import {CommonModule, NgIf} from '@angular/common';
 import { Router, RouterLink, RouterModule,RouterLinkActive } from '@angular/router';
-
 import { LoginService } from '../../services/auth/login.service';
 
 

@@ -1,7 +1,10 @@
-/* @import url('https://fonts.googleapis.com/css2?family=Bangers&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bangers&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Bangers&family=Hachi+Maru+Pop&family=Patrick+Hand&display=swap');
- */
+@import url('https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Special+Elite&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rockwell&display=swap');
+
 
 *{
     margin: 0;
@@ -27,14 +30,18 @@ header {
 }
 
 .logo {
-    object-fit: contain;
-    width: 120px;
+/*     object-fit: contain;
+ */    width: 120px;
 }
 
 .logo:hover {
     transform: scale(1.1);
 }
-
+.nav__links a {
+    font-family: 'Rockwell', serif;
+    font-size: 1.5rem;
+    color: #fcd69e;
+}
 .nav__links li {
     display: inline-block;
     color: #fcd69e;
@@ -42,19 +49,23 @@ header {
     margin-left: 1rem;
     padding: 0 10px;
     flex: 1;
+    background: linear-gradient(45deg, #8b4513, #a0522d); /* Color madera */
+    border-radius: 5px;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.3); /* Efecto de sombra interna */
 }
 
 .nav__links li a {
-    font-family: 'Bangers', sans-serif;
+    font-family: 'Rockwell', serif;
     font-size: 1.5rem;
     color: #fcd69e;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Efecto de sombra para resaltar texto */
 }
 
 .nav__links a:hover {
     color: #e5ac57;
     box-shadow: #9a1515 2px;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5); /* Resalta el texto al pasar el mouse */
 }
-
 
 label #btn-nav,
 label #cancel {
@@ -117,7 +128,7 @@ label #cancel {
 
     nav ul li a {
         font-size: 20px;
-        color: #fcd69e;
+        color: #fcca9e;
     }
 
     #check:checked~ul {
@@ -136,18 +147,18 @@ label #cancel {
 
 /* Estilos para la barra de navegación */
 .navbar-logo {
-    display: flex;
+/*     display: flex;
     align-items: center;
-    text-decoration: none;
+    text-decoration: none; */
 }
 
 .logo {
     width: 100px;
-    height: 100px;
-    background-image: url('../../../assets/image.png');
+    height: 80px;
+    background-image: url('https://res.cloudinary.com/dhufclese/image/upload/v1742853821/logoalparque_cpihuh.jpg');
     background-size: cover;
     background-position: center;
-    border-radius: 50%;
+    border-radius: 30%;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 
     transition: transform 0.3s ease-in-out;

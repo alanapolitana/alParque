@@ -3,12 +3,12 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { LoginService } from '../services/auth/login.service';  // Asegúrate de importar el servicio de login
 
-const API_URL = 'http://localhost:8000/api/actividades/'; // Cambia esta URL a la correcta
-
+const BASE_URL = 'https://alparque.onrender.com/api/actividades/';
 @Injectable({
   providedIn: 'root'
 })
 export class ActividadesService {
+  private apiUrl = BASE_URL; // Base URL común para todas las actividades
 
   constructor(private http: HttpClient, private loginService: LoginService) { }
 
@@ -17,7 +17,7 @@ export class ActividadesService {
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${this.loginService.userToken}`
     });
-    return this.http.get(API_URL, { headers });
+    return this.http.get(this.apiUrl, { headers });
   }
 
   // Obtener una actividad por ID (GET)
@@ -25,7 +25,7 @@ export class ActividadesService {
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${this.loginService.userToken}`
     });
-    return this.http.get(`${API_URL}${id}/`, { headers });
+    return this.http.get(`${this.apiUrl}${id}/`, { headers });
   }
 
   // Crear una nueva actividad (POST)
@@ -33,7 +33,7 @@ export class ActividadesService {
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${this.loginService.userToken}`
     });
-    return this.http.post(API_URL, actividadData, { headers });
+    return this.http.post(this.apiUrl, actividadData, { headers });
   }
 
   // Actualizar una actividad (PATCH)
@@ -41,7 +41,7 @@ export class ActividadesService {
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${this.loginService.userToken}`
     });
-    return this.http.patch(`${API_URL}${id}/`, actividadData, { headers });
+    return this.http.patch(`${this.apiUrl}${id}/`, actividadData, { headers });
   }
 
   // Eliminar una actividad (DELETE)
@@ -49,6 +49,17 @@ export class ActividadesService {
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${this.loginService.userToken}`
     });
-    return this.http.delete(`${API_URL}${id}/`, { headers });
+    return this.http.delete(`${this.apiUrl}${id}/`, { headers });
   }
+
+  // Obtener actividades filtradas por parque (GET)
+  getActividadesFiltradas(parqueId: number | null): Observable<any> {
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.loginService.userToken}`
+    });
+    const url = parqueId ? `${this.apiUrl}?parque=${parqueId}` : this.apiUrl;
+    return this.http.get(url, { headers });
+  }
+
+  
 }

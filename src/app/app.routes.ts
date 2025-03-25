@@ -11,6 +11,8 @@ import { ModalComponent } from './modal/modal.component';
 import { ProfileComponent } from './dashboard-profile/profile-template/profile-template.component';
 import { ParquesComponent } from './parques/parques.component';
 import { ActividadesComponent } from './actividades/actividades.component';
+import { EventosComponent } from './eventos/eventos.component';
+
 export const routes: Routes = [
 
   { path: "", redirectTo: "home", pathMatch: "full" },
@@ -84,6 +86,16 @@ export const routes: Routes = [
         title: 'QUIENES SOMOS',
         parent: '',
         path: 'about-us',
+      },
+    },
+  },  {
+    path: 'eventos',
+    component: EventosComponent,
+    data: {
+      breadcrumb: {
+        title: 'EEVENTOS',
+        parent: '',
+        path: 'eventos',
       },
     },
   },

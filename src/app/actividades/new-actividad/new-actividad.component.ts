@@ -11,7 +11,7 @@ import { FormsModule } from '@angular/forms';
   imports: [CommonModule, FormsModule]
 })
 export class NewActividadComponent implements OnInit {
-  @Output() closeModal = new EventEmitter<void>();
+  @Output() cerrarModal = new EventEmitter<void>();
 
   actividad: any = {
     nombre: '',
@@ -43,7 +43,7 @@ export class NewActividadComponent implements OnInit {
       'Authorization': `Bearer ${token}`
     });
 
-    this.http.get<any[]>('http://localhost:8000/api/parques/', { headers }).subscribe(
+    this.http.get<any[]>('https://alparque.onrender.com/api/parques/', { headers }).subscribe(
       (data) => {
         this.parques = data;
       },
@@ -102,15 +102,19 @@ export class NewActividadComponent implements OnInit {
       headers = headers.set('Authorization', `Bearer ${token}`);
     }
 
-    this.http.post('http://localhost:8000/api/actividades/', formData, { headers }).subscribe(
+    this.http.post('https://alparque.onrender.com/api/actividades/', formData, { headers }).subscribe(
       (response) => {
         console.log('Actividad guardada:', response);
-        this.closeModal.emit();
+        this.closeModal();
       },
       (error) => {
         console.error('Error al guardar la actividad:', error);
         this.error = error?.error?.imagenes?.[0] || error?.error?.parque?.[0] || error?.error?.website?.[0] || 'Error al guardar la actividad';
       }
     );
+  }
+
+  closeModal(): void {
+    this.cerrarModal.emit(); // Notificar al padre que debe cerrar el modal
   }
 }

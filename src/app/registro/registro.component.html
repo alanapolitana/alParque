@@ -6,8 +6,8 @@
             <h1>PERFILES</h1>
         </div> -->
         <div class="title_registro">
-            <div class="logo"></div>
-            <h1>PERFILES</h1>
+            <div class="logo" col="md6"></div>
+            <h1></h1>
         </div>
             
         <h2>Registro</h2> 
@@ -81,20 +81,7 @@
                 <small *ngIf="form.get('phone')?.errors?.['minlength'] && form.get('phone')?.touched">*Teléfono no es valido</small>
             </div>
 
-            <div class="form__field">
-                <input 
-                class="controles" 
-                type="text" 
-                formControlName="address"
-                name="address" 
-                placeholder="Dirección" 
-                id="address"
-                autocomplete="off"
-                value=""
-                />
-                <label for="address"></label>
-                <small *ngIf="form.get('address')?.errors?.['required'] && form.get('address')?.touched">*Direcciónn es requerida</small>
-            </div>
+            
 
             <div class="form__field">
                 <input 

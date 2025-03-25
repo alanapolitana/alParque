@@ -1,14 +1,14 @@
 import { Component, AfterViewInit } from '@angular/core';
 
 @Component({
-  selector: 'app-footer',
-  templateUrl: './footer.component.html',
-  styleUrls: ['./footer.component.css']
+  selector: 'app-aside-publicitario',
+  templateUrl: './aside-publicitario.component.html',
+  styleUrls: ['./aside-publicitario.component.css']
 })
-export class FooterComponent implements AfterViewInit {
+export class AsidePublicitarioComponent implements AfterViewInit {
 
   ngAfterViewInit(): void {
-    this.startAdRotation('footer');
+    this.startAdRotation('aside');
   }
 
   startAdRotation(containerId: string): void {
@@ -25,3 +25,4 @@ export class FooterComponent implements AfterViewInit {
     setInterval(showAd, 5000); // Cambia la publicidad cada 5 segundos
   }
 }
+

@@ -56,7 +56,7 @@ export class NewParqueComponent {
       headers = headers.set('Authorization', `Bearer ${token}`);
     }
 
-    this.http.post('http://localhost:8000/api/parques/', formData, { headers }).subscribe(
+    this.http.post('https://alparque.onrender.com/api/parques/', formData, { headers }).subscribe(
       (response) => {
         alert('Parque registrado exitosamente.');
         this.nombre = '';
