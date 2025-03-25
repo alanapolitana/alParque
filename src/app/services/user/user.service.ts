@@ -67,7 +67,7 @@ export class UserService {
       'Authorization': `Bearer ${this.loginService.userToken}`
     });
 
-    return this.http.get<User>('http://127.0.0.1:8000/api/user/', { headers }).pipe(
+    return this.http.get<User>('https://al-parque.vercel.app/api/user/', { headers }).pipe(
       tap(user => this.user$.next(user)),
       catchError(this.handleError)
     );
@@ -89,7 +89,7 @@ export class UserService {
         'Content-Type': 'application/json'
       });
     
-      return this.http.patch<User>('http://127.0.0.1:8000/api/user/', user, { headers }).pipe(
+      return this.http.patch<User>('https://al-parque.vercel.app/api/user/', user, { headers }).pipe(
         tap(updatedUser => this.user$.next(updatedUser)),
         catchError(this.handleError)
       );
@@ -105,7 +105,7 @@ export class UserService {
   }
 
   registerUser(user: User): Observable<any> {
-    return this.http.post<any>('http://127.0.0.1:8000/api/register/', user).pipe(
+    return this.http.post<any>('https://al-parque.vercel.app/api/register/', user).pipe(
       catchError(this.handleError)
     );
   }
