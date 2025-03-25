@@ -10,7 +10,7 @@ export class RegistroService {
   constructor(private http: HttpClient) { }
 
   registerUser(user: any): Observable<any> {
-    return this.http.post<any>('http://127.0.0.1:8000/api/register/', user).pipe(
+    return this.http.post<any>('https://alparque.onrender.com/api/register/', user).pipe(
       catchError(this.handleError)
     )
   }
