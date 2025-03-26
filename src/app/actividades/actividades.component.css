@@ -50,7 +50,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: url('https://res.cloudinary.com/dhufclese/image/upload/v1739460069/sarmientoturismo3_cuu1vq.jpg');
+  background: url('https://res.cloudinary.com/dhufclese/image/upload/v1742994962/sarmientoturismo3_asikld.jpg');
   background-size: cover;
   background-attachment: fixed;
 }
@@ -108,18 +108,16 @@
 
 /* Estilos del fondo */
 main {
-    background: url('https://res.cloudinary.com/dhufclese/image/upload/v1739460069/sarmientoturismo3_cuu1vq.jpg');
+    background: url('https://res.cloudinary.com/dhufclese/image/upload/v1742994962/sarmientoturismo3_asikld.jpg');
     background-size: cover;
     background-position: center;
     min-height: 100vh;
-    padding: 20px;
+
 }
 
 /* Contenedor principal */
 .container {
-    max-width: 1200px;
     margin: auto;
-    padding: 20px;
 }
 
 /* Estilos del título */
