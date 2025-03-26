@@ -93,7 +93,7 @@ export class DashboardProfileComponent implements OnInit {
         const formData = new FormData();
         formData.append('image', file);
 
-        this.http.patch<User>('https://al-parque.vercel.app/api/user/', formData, {
+        this.http.patch<User>('https://alparque.onrender.com/api/user/', formData, {
             headers: {
                 Authorization: `Bearer ${this.loginService.userToken}`
             }
