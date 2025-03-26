@@ -9,9 +9,9 @@ import { LoginService } from '../../services/auth/login.service';
   providedIn: 'root',
 })
 export class ImcService {
-  private apiUrl = 'https://al-parque.vercel.app/api/bmi/create/'; // Endpoint base para IMC
-  private exportUrl = 'https://al-parque.vercel.app/api/bmi/export/'; // Endpoint para exportar IMC
-  private graphUrl = 'https://al-parque.vercel.app//api/bmi/chart/';  // Endpoint para gráfica de IMC
+  private apiUrl = 'https://alparque.onrender.com/api/bmi/create/'; // Endpoint base para IMC
+  private exportUrl = 'https://alparque.onrender.com/api/bmi/export/'; // Endpoint para exportar IMC
+  private graphUrl = 'https://alparque.onrender.com/api/bmi/chart/';  // Endpoint para gráfica de IMC
 
   constructor(private http: HttpClient, private loginService: LoginService) {}
 
