@@ -23,13 +23,29 @@ export class ActividadDetallesTemplateComponent {
     }
   }
   registrarActividad(): void {
+    // Validar que la actividad seleccionada tiene un ID válido
     if (!this.actividadSeleccionada || !this.actividadSeleccionada.id) {
       console.error("La actividad seleccionada no tiene un ID válido.");
+      alert('Por favor, selecciona una actividad válida.');
       return;
     }
   
-    this.actividadUsuarioService.createActividadUsuario({ actividad: this.actividadSeleccionada.id })
-
+    // Obtener el ID del usuario desde el localStorage
+    const userId = localStorage.getItem('userId'); // O usa un servicio de autenticación
+    if (!userId) {
+      console.error("No se encontró el ID del usuario.");
+      alert('Debes iniciar sesión para registrarte en la actividad.');
+      return;
+    }
+  
+    // Crear el objeto de datos a enviar en la solicitud
+    const requestData = {
+      actividad_id: this.actividadSeleccionada.id, // Asegúrate de usar 'actividad_id'
+      user: userId // Asegúrate de que el 'user' se envíe correctamente
+    };
+  
+    // Llamar al servicio para registrar la actividad del usuario
+    this.actividadUsuarioService.createActividadUsuario(requestData)
       .subscribe({
         next: (response) => {
           console.log('Registro exitoso:', response);
@@ -38,10 +54,11 @@ export class ActividadDetallesTemplateComponent {
         },
         error: (error) => {
           console.error('Error al registrar actividad:', error);
-          alert('lalala');
+          alert('Hubo un error al registrarte en la actividad.');
         }
       });
   }
+  
   
   
 // Función para obtener el parque desde el servicio
