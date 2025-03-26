@@ -67,7 +67,7 @@ export class UserService {
       'Authorization': `Bearer ${this.loginService.userToken}`
     });
 
-    return this.http.get<User>('https://al-parque.vercel.app/api/user/', { headers }).pipe(
+    return this.http.get<User>('https://al-parque.vercel.app/api/user/${id}', { headers }).pipe(
       tap(user => this.user$.next(user)),
       catchError(this.handleError)
     );
