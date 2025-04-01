@@ -1,4 +1,4 @@
-
+/* 
   import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
@@ -26,16 +26,6 @@ export class ImcService {
     );
   }
 
-  // Obtener datos para la gráfica
-  /* verGraficaIMC(): Observable<any> {
-    const headers = new HttpHeaders({
-      'Authorization': `Bearer ${this.loginService.userToken}`,
-    });
-
-    return this.http.get<any>(this.graphUrl, { headers }).pipe(
-      catchError(this.handleError)
-    );
-  } */
 // Obtener datos para la gráfica
 verGraficaIMC(): Observable<Blob> {
   const headers = new HttpHeaders({
@@ -75,3 +65,67 @@ verGraficaIMC(): Observable<Blob> {
   }
 }
 
+ */
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
+import { LoginService } from '../../services/auth/login.service';
+import { environment } from '../../../environments/environment.prod';
+
+@Injectable({
+  providedIn: 'root',
+})
+export class ImcService {
+  // Usar la URL definida en el entorno
+  private apiUrl = `${environment.API_URL}bmi/create/`;  // Endpoint base para IMC
+  private exportUrl = `${environment.API_URL}bmi/export/`; // Endpoint para exportar IMC
+  private graphUrl = `${environment.API_URL}bmi/chart/`;  // Endpoint para gráfica de IMC
+
+  constructor(private http: HttpClient, private loginService: LoginService) {}
+
+  // Exportar datos de IMC
+  exportarIMC(): Observable<Blob> {
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.loginService.userToken}`,
+    });
+
+    return this.http.get(this.exportUrl, { headers, responseType: 'blob' }).pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  // Obtener datos para la gráfica
+  verGraficaIMC(): Observable<Blob> {
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.loginService.userToken}`,
+    });
+
+    return this.http.get<Blob>(this.graphUrl, { headers, responseType: 'blob' as 'json' }).pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  // Guardar un nuevo registro de IMC
+  saveIMC(imcData: { user: number; peso: string; altura: string; imc: string }): Observable<any> {
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.loginService.userToken}`,
+    });
+
+    const body = {
+      user: imcData.user,       // user como número entero
+      weight: imcData.peso.toString(),  // peso como string
+      height: imcData.altura.toString(),  // altura como string
+    };
+
+    return this.http.post<any>(this.apiUrl, body, { headers }).pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  // Manejo de errores
+  private handleError(error: any): Observable<never> {
+    console.error('Error en el servicio de IMC:', error);
+    return throwError(() => new Error('Ocurrió un error. Por favor, inténtelo de nuevo más tarde.'));
+  }
+}

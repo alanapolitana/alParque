@@ -1,22 +1,23 @@
 @import url('https://fonts.googleapis.com/css2?family=Rockwell&display=swap');
 
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     list-style: none;
     text-decoration: none;
 }
+
 header {
     width: 100%;
     height: 80px;
-    /*    position: absolute;
-    top: 0; */
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 20px;
     background-color: #1e1e1e;
+    position: relative;
+    z-index: 1000;
 }
 
 .navbar {
@@ -24,51 +25,47 @@ header {
 }
 
 .logo {
-/*     object-fit: contain;
- */    width: 120px;
+    width: 120px;
+    height: 80px;
+    background-image: url('https://res.cloudinary.com/dhufclese/image/upload/v1742853821/logoalparque_cpihuh.jpg');
+    background-size: cover;
+    background-position: center;
+    border-radius: 30%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out;
+    cursor: pointer;
 }
 
 .logo:hover {
     transform: scale(1.1);
 }
-.nav__links a {
-    font-family: 'Rockwell', serif;
-    font-size: 1.5rem;
-    color: #fcd69e;
+
+.nav__links {
+    display: flex;
+    gap: 10px;
 }
+
 .nav__links li {
-    display: inline-block;
-    color: #fcd69e;
-    padding: 8px;
-    margin-left: 1rem;
-    padding: 0 10px;
-    flex: 1;
-    background: linear-gradient(45deg, #8b4513, #a0522d); /* Color madera */
+    background: linear-gradient(45deg, #8b4513, #a0522d);
     border-radius: 5px;
-    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.3); /* Efecto de sombra interna */
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.3);
+    padding: 8px 15px;
 }
 
 .nav__links li a {
     font-family: 'Rockwell', serif;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     color: #fcd69e;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Efecto de sombra para resaltar texto */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .nav__links a:hover {
     color: #e5ac57;
-    box-shadow: #9a1515 2px;
-    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5); /* Resalta el texto al pasar el mouse */
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
 }
 
 label #btn-nav,
 label #cancel {
-    color: #fcd69e;
-    font-size: 30px;
-    float: right;
-    line-height: 80px;
-    margin-right: 40px;
-    cursor: pointer;
     display: none;
 }
 
@@ -77,87 +74,27 @@ label #cancel {
 }
 
 /* Estilos para dispositivos móviles */
-@media (max-width: 860px) {
+@media (max-width: 900px) {
     .nav__links {
-        display: none;
-        padding: 0;
-    }
-
-    .navbar {
+        max-height: 0;
+        overflow: hidden;
         flex-direction: column;
-        align-items: flex-end;
-    }
-
-    #check {
-        display: none;
-    }
-
-    label #btn-nav,
-    label #cancel {
-        color: #fcd69e;
-        font-size: 30px;
-        line-height: 80px;
-        cursor: pointer;
-        display: block;
-    }
-
-    nav ul {
-        width: 100%;
-        background: #1e1e1e;
         position: absolute;
         top: 80px;
-        left: -100%;
-        text-align: center;
-        transition: all .5s;
-        z-index: 100;
-        display: flex;
-        flex-direction: column;
-    }
-
-    nav ul li {
-        display: block;
-        margin: 20px 0;
-        line-height: 30px;
-    }
-
-    nav ul li a {
-        font-size: 20px;
-        color: #fcca9e;
-    }
-
-    #check:checked~ul {
         left: 0;
+        width: 100%;
+        background: #1e1e1e;
+        padding: 0;
+        text-align: center;
+        transition: max-height 0.3s ease-in-out;
     }
 
-    #check:checked~label #btn-nav {
-        display: none;
+    .nav__links.active {
+        max-height: 500px;
+        padding: 10px 0;
     }
 
-    #check:checked~label #cancel {
-        display: block;
+    .logo {
+        cursor: pointer;
     }
-}
-
-
-/* Estilos para la barra de navegación */
-.navbar-logo {
-/*     display: flex;
-    align-items: center;
-    text-decoration: none; */
-}
-
-.logo {
-    width: 100px;
-    height: 80px;
-    background-image: url('https://res.cloudinary.com/dhufclese/image/upload/v1742853821/logoalparque_cpihuh.jpg');
-    background-size: cover;
-    background-position: center;
-    border-radius: 30%;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-
-    transition: transform 0.3s ease-in-out;
-}
-
-.logo:hover {
-    transform: scale(1.1);
 }
