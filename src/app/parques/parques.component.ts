@@ -29,28 +29,26 @@ export class ParquesComponent implements OnInit {
     private modalService: ModalService,
     private sanitizer: DomSanitizer
   ) { }
-
   ngOnInit(): void {
     this.getParques();
   }
 
-
-
+  // Obtener todos los parques (GET)
   getParques(): void {
     this.parqueService.getParques().subscribe(
       (data) => {
-        this.parques = data.map((parque: any) => ({
-          ...parque,
-          imagenes: this.parseImagenes(parque.imagenes)
-        }));
-        console.log('Parques procesados:', this.parques);
+        if (Array.isArray(data)) {
+          this.parques = data;
+          console.log('Parques cargados:', this.parques);  // Verifica los datos en la consola
+        } else {
+          console.error('La respuesta no es un arreglo:', data);
+        }
       },
       (error) => {
         console.error('Hubo un error al obtener los parques:', error);
       }
     );
   }
-
   sanitizeUrl(url: string): SafeUrl {
     return this.sanitizer.bypassSecurityTrustUrl(url);
   }

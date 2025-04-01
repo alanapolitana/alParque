@@ -67,7 +67,7 @@ export class ActividadesService {
   import { HttpClient, HttpHeaders } from '@angular/common/http';
   import { Observable } from 'rxjs';
   import { LoginService } from '../services/auth/login.service';
-  import { environment } from '../../environments/environment.prod';
+  import { environment } from '../../environments/environment';
   
   @Injectable({
     providedIn: 'root'
