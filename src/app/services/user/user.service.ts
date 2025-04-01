@@ -66,7 +66,7 @@ import { catchError, tap } from 'rxjs/operators';
 import { User } from './user';
 import { JwtService } from '../auth/jwt.service';
 import { LoginService } from '../auth/login.service';
-import { environment } from '../../../environments/environment.prod';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
