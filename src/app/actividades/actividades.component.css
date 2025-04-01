@@ -95,8 +95,7 @@
     transform: scale(1.1) rotate(5deg);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
 }
-/* Importación de fuente */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
 
 /* Reset de estilos generales */
 * {

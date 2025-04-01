@@ -47,7 +47,6 @@ export const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent,
-    /*      canActivate: [AuthGuard], */
     data: {
       breadcrumb: {
         title: 'LOGIN',
@@ -57,8 +56,8 @@ export const routes: Routes = [
     },
   },
   {
-    path: 'registro', // Ruta para el registro
-    component: RegistroComponent, // Componente de registro
+    path: 'registro',
+    component: RegistroComponent,
     data: {
       breadcrumb: {
         title: 'REGISTRO',
@@ -70,6 +69,7 @@ export const routes: Routes = [
   {
     path: 'actividades',
     component: ActividadesComponent,
+    canActivate: [AuthGuard],
     data: {
       breadcrumb: {
         title: 'ACTIVIDADES',
@@ -91,6 +91,7 @@ export const routes: Routes = [
   },  {
     path: 'eventos',
     component: EventosComponent,
+    canActivate: [AuthGuard],
     data: {
       breadcrumb: {
         title: 'EEVENTOS',

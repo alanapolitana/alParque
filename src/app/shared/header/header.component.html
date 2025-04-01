@@ -1,26 +1,16 @@
 <header>
-  <!-- <a class="navbar-logo" href="#">
-      <img
-        class="logo"
-        src=""
-        alt="Perfiles"
-        />
-    </a> -->
-  <a class="navbar-logo" href="#">
+  <a class="navbar-logo" (click)="toggleMenu()">
     <div class="logo"></div>
   </a>
 
   <nav class="navbar">
-    <!-- Menu Hamburguesa -->
-    <input type="checkbox" id="check" />
-    <label for="check">
-      <i class="fas fa-bars" id="btn-nav"></i>
-      <i class="fas fa-times" id="cancel"></i>
+    <input type="checkbox" id="check" [checked]="menuOpen" />
+    <label for="check" (click)="toggleMenu()">
+      <i class="fas fa-bars" *ngIf="!menuOpen"></i>
+      <i class="fas fa-times" *ngIf="menuOpen"></i>
     </label>
-    <!-- Fin Menu Hamburguesa  -->
-    <ul class="nav__links">
 
-
+    <ul class="nav__links" [class.active]="menuOpen">
       <li class="nav-item">
         <a class="nav-link" routerLink="/parques" routerLinkActive="active">Parques</a>
       </li>
@@ -28,48 +18,20 @@
         <a class="nav-link" routerLink="/actividades" routerLinkActive="active">Actividades</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="/about-us" routerLinkActive="active">¿Quienes somos?</a>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/eventos" routerLinkActive="active">Eventos y ultimas noticias</a>
+        <a class="nav-link" routerLink="/about-us" routerLinkActive="active">¿Quiénes somos?</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" *ngIf="isLoggedIn" routerLink="/dashboard-profile" routerLinkActive="active">MI PERFIL</a>
+        <a class="nav-link" routerLink="/eventos" routerLinkActive="active">Eventos y últimas noticias</a>
       </li>
-
-
-
-      <!-- <li class="nav-item"
-        >
-        <a class="nav-link"
-        routerLink="/app-products"
-        routerLinkActive="active"
-        >PRODUCTOS</a>
-        </li> -->
-
-      <!-- <li class="nav-item"
-        >
-        <a class="nav-link"
-        routerLink="/contact"
-        routerLinkActive="active"
-        >CONTACTO</a>
-        </li> -->
-
-      <!--  <li>
-          <a href="#form">CONTACTO</a>
-        </li> -->
-
+      <li class="nav-item" *ngIf="isLoggedIn">
+        <a class="nav-link" routerLink="/dashboard-profile" routerLinkActive="active">MI PERFIL</a>
+      </li>
       <li class="nav-item" *ngIf="!isLoggedIn">
         <a class="nav-link" routerLink="/login" routerLinkActive="active">Iniciar Sesión</a>
       </li>
-
       <li class="nav-item" *ngIf="!isLoggedIn">
         <a class="nav-link" routerLink="/registro" routerLinkActive="active">Registrarse</a>
       </li>
-
-      <li class="nav-item">
-
     </ul>
   </nav>
 </header>

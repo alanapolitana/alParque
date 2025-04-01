@@ -13,6 +13,9 @@ import { LoginService } from '../../services/auth/login.service';
 })
 export class HeaderComponent implements OnInit, OnDestroy{
   isLoggedIn: boolean = false;
+  menuOpen = false;
+
+
 
   constructor(private loginService: LoginService){}
 
@@ -27,5 +30,8 @@ export class HeaderComponent implements OnInit, OnDestroy{
         this.isLoggedIn = isLoggedIn;
       }
     });
+  }
+  toggleMenu() {
+    this.menuOpen = !this.menuOpen;
   }
 }
