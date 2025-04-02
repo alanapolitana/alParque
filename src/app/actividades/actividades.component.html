@@ -13,8 +13,8 @@
   <div class="actividades-list">
     <div *ngFor="let actividad of actividades" class="actividad-item">
       <h3>{{ actividad.nombre }}</h3>
-<!--       <p>{{ actividad.descripcion }}</p> -->
-<!--       <p>{{ actividad.comentarios }}</p> -->
+      <p>{{ actividad.descripcion }}</p>
+      <p>{{ actividad.comentarios }}</p>
       <!-- Mostrar el estado habilitado o en pausa -->
       <div class="switch">
         <input type="checkbox" id="habilitado" [checked]="actividad.habilitado" disabled />

@@ -100,7 +100,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, BehaviorSubject, tap, catchError, throwError, map } from 'rxjs';
 import { LoginRequest } from './login.request';
 import { jwtDecode } from 'jwt-decode';
-import { environment } from '../../../environments/environment.prod';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
