@@ -191,4 +191,10 @@ export class LoginService {
       return false;
     }
   }
+
+  get userId(): number | null {
+    const id = localStorage.getItem('userId');
+    return id ? Number(id) : null;
+  }
+  
 }

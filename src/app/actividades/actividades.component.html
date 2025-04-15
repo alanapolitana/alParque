@@ -36,14 +36,18 @@
     [actividadSeleccionada]="actividadSeleccionada"></app-actividad-detalles-template>
 
   <!-- Modal para registrar nueva actividad -->
-  <ng-template #newActividad>
+ <!--  <ng-template #newActividad>
     <app-new-actividad (closeModal)="openNewActividadModal()"></app-new-actividad>
+  </ng-template> -->
+  <ng-template #newActividad>
+    <app-new-actividad (cerrarModal)="cerrarModalDesdePadre()"></app-new-actividad>
   </ng-template>
-
   <!-- Modal para ver detalles de la actividad -->
   <app-actividad-detalles-template 
     *ngIf="actividadSeleccionada"
     [actividadSeleccionada]="actividadSeleccionada"
     (cerrarModal)="actividadSeleccionada = null">
   </app-actividad-detalles-template>
+
+  
 </div>

@@ -54,7 +54,7 @@ export class ActividadDetallesTemplateComponent {
         },
         error: (error) => {
           console.error('Error al registrar actividad:', error);
-          alert('Hubo un error al registrarte en la actividad.');
+          alert('Ya estas registrado');
         }
       });
   }

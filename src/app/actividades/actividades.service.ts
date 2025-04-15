@@ -1,130 +1,51 @@
-/* import { Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { LoginService } from '../services/auth/login.service';  // Asegúrate de importar el servicio de login
+import { LoginService } from '../services/auth/login.service';
+import { environment } from '../../environments/environment';
+import { Actividad } from './actividad.model';
 
-const BASE_URL = 'https://alparque.onrender.com/api/actividades/';
 @Injectable({
   providedIn: 'root'
 })
 export class ActividadesService {
-  private apiUrl = BASE_URL; // Base URL común para todas las actividades
+  private apiUrl = `${environment.API_URL}actividades/`;
+  private parquesUrl = `${environment.API_URL}parques/`;
 
-  constructor(private http: HttpClient, private loginService: LoginService) { }
+  constructor(private http: HttpClient, private loginService: LoginService) {}
 
-  // Obtener todas las actividades (GET)
-  getActividades(): Observable<any> {
-    const headers = new HttpHeaders({
+  private getHeaders(): HttpHeaders {
+    return new HttpHeaders({
       'Authorization': `Bearer ${this.loginService.userToken}`
     });
-    return this.http.get(this.apiUrl, { headers });
   }
 
-  // Obtener una actividad por ID (GET)
-  getActividad(id: number): Observable<any> {
-    const headers = new HttpHeaders({
-      'Authorization': `Bearer ${this.loginService.userToken}`
-    });
-    return this.http.get(`${this.apiUrl}${id}/`, { headers });
+  getActividades(): Observable<Actividad[]> {
+    return this.http.get<Actividad[]>(this.apiUrl, { headers: this.getHeaders() });
   }
 
-  // Crear una nueva actividad (POST)
-  createActividad(actividadData: any): Observable<any> {
-    const headers = new HttpHeaders({
-      'Authorization': `Bearer ${this.loginService.userToken}`
-    });
-    return this.http.post(this.apiUrl, actividadData, { headers });
+  getActividad(id: number): Observable<Actividad> {
+    return this.http.get<Actividad>(`${this.apiUrl}${id}/`, { headers: this.getHeaders() });
   }
 
-  // Actualizar una actividad (PATCH)
-  updateActividad(id: number, actividadData: any): Observable<any> {
-    const headers = new HttpHeaders({
-      'Authorization': `Bearer ${this.loginService.userToken}`
-    });
-    return this.http.patch(`${this.apiUrl}${id}/`, actividadData, { headers });
+  createActividad(formData: FormData): Observable<Actividad> {
+    return this.http.post<Actividad>(this.apiUrl, formData, { headers: this.getHeaders() });
   }
 
-  // Eliminar una actividad (DELETE)
-  deleteActividad(id: number): Observable<any> {
-    const headers = new HttpHeaders({
-      'Authorization': `Bearer ${this.loginService.userToken}`
-    });
-    return this.http.delete(`${this.apiUrl}${id}/`, { headers });
+  updateActividad(id: number, actividadData: Partial<Actividad>): Observable<Actividad> {
+    return this.http.patch<Actividad>(`${this.apiUrl}${id}/`, actividadData, { headers: this.getHeaders() });
   }
 
-  // Obtener actividades filtradas por parque (GET)
-  getActividadesFiltradas(parqueId: number | null): Observable<any> {
-    const headers = new HttpHeaders({
-      'Authorization': `Bearer ${this.loginService.userToken}`
-    });
+  deleteActividad(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}${id}/`, { headers: this.getHeaders() });
+  }
+
+  getActividadesFiltradas(parqueId: number | null): Observable<Actividad[]> {
     const url = parqueId ? `${this.apiUrl}?parque=${parqueId}` : this.apiUrl;
-    return this.http.get(url, { headers });
+    return this.http.get<Actividad[]>(url, { headers: this.getHeaders() });
   }
 
-  
-} */
-  import { Injectable } from '@angular/core';
-  import { HttpClient, HttpHeaders } from '@angular/common/http';
-  import { Observable } from 'rxjs';
-  import { LoginService } from '../services/auth/login.service';
-  import { environment } from '../../environments/environment';
-  
-  @Injectable({
-    providedIn: 'root'
-  })
-  export class ActividadesService {
-    // Usar la URL base definida en el entorno
-    private apiUrl = `${environment.API_URL}actividades/`;  // URL base para actividades
-  
-    constructor(private http: HttpClient, private loginService: LoginService) { }
-  
-    // Obtener todas las actividades (GET)
-    getActividades(): Observable<any> {
-      const headers = new HttpHeaders({
-        'Authorization': `Bearer ${this.loginService.userToken}`
-      });
-      return this.http.get(this.apiUrl, { headers });
-    }
-  
-    // Obtener una actividad por ID (GET)
-    getActividad(id: number): Observable<any> {
-      const headers = new HttpHeaders({
-        'Authorization': `Bearer ${this.loginService.userToken}`
-      });
-      return this.http.get(`${this.apiUrl}${id}/`, { headers });
-    }
-  
-    // Crear una nueva actividad (POST)
-    createActividad(actividadData: any): Observable<any> {
-      const headers = new HttpHeaders({
-        'Authorization': `Bearer ${this.loginService.userToken}`
-      });
-      return this.http.post(this.apiUrl, actividadData, { headers });
-    }
-  
-    // Actualizar una actividad (PATCH)
-    updateActividad(id: number, actividadData: any): Observable<any> {
-      const headers = new HttpHeaders({
-        'Authorization': `Bearer ${this.loginService.userToken}`
-      });
-      return this.http.patch(`${this.apiUrl}${id}/`, actividadData, { headers });
-    }
-  
-    // Eliminar una actividad (DELETE)
-    deleteActividad(id: number): Observable<any> {
-      const headers = new HttpHeaders({
-        'Authorization': `Bearer ${this.loginService.userToken}`
-      });
-      return this.http.delete(`${this.apiUrl}${id}/`, { headers });
-    }
-  
-    // Obtener actividades filtradas por parque (GET)
-    getActividadesFiltradas(parqueId: number | null): Observable<any> {
-      const headers = new HttpHeaders({
-        'Authorization': `Bearer ${this.loginService.userToken}`
-      });
-      const url = parqueId ? `${this.apiUrl}?parque=${parqueId}` : this.apiUrl;
-      return this.http.get(url, { headers });
-    }
+  cargarParques(): Observable<any> {
+    return this.http.get(this.parquesUrl, { headers: this.getHeaders() });
   }
-  
+}

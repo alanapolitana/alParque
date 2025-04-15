@@ -3,12 +3,9 @@ export interface Actividad {
   nombre: string;
   descripcion: string;
   imagenes: string[];
-  instagram: string;
-  website: string;
-  telefono: string;
-  habilitado: boolean | undefined;
-  comentarios: string;
+  instagram: string | null;
+  website: string | null;
+  habilitado: boolean;
+  comentarios: string | null;
   parque: number | null;
-  administrador: boolean;
-
 }
