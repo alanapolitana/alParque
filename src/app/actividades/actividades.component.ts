@@ -113,5 +113,10 @@ export class ActividadesComponent implements OnInit {
   closeActividadModal(): void {
     this.actividadSeleccionada = null;
   }
+  cerrarModalDesdePadre(): void {
+    this.modalService.closeModal(); // cierra el modal
+    
+    this.cargarActividades(); // recarga la lista
+  }
   
 }

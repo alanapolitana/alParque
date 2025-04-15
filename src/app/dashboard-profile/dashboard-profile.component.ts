@@ -113,8 +113,14 @@ export class DashboardProfileComponent implements OnInit {
             }
         });
     }
+}verActividad(actividad: any): void {
+  console.log("Actividad seleccionada:", actividad);
+  // podés hacer un navigate, abrir modal, etc.
+  // ejemplo:
+  this.router.navigate(['/actividad', actividad.id]);
 }
-cargarActividades(): void {
+
+/* cargarActividades(): void {
   this.actividadUsuarioService.getActividadesUsuarios().subscribe({
     next: (actividades) => {
       this.actividades = actividades; 
@@ -124,5 +130,25 @@ cargarActividades(): void {
       console.error("Error al obtener actividades:", err);
     }
   });
+} */cargarActividades(): void {
+  this.actividadUsuarioService.getActividadesUsuarios().subscribe({
+    next: (actividades) => {
+      // Filtrar por nombre de actividad único
+      const nombresUnicos = new Set();
+      this.actividades = actividades.filter((actividad: any) => {
+        if (!nombresUnicos.has(actividad.actividad)) {
+          nombresUnicos.add(actividad.actividad);
+          return true;
+        }
+        return false;
+      });
+
+      console.log('Actividades únicas:', this.actividades);
+    },
+    error: (err) => {
+      console.error("Error al obtener actividades:", err);
+    }
+  });
 }
+
 }

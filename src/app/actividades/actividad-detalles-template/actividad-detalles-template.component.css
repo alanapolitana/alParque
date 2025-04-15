@@ -31,17 +31,6 @@
   overflow-y: auto; /* Hacer que el contenido se pueda desplazar si es necesario */
 }
 
-/* Animación de desvanecimiento del modal */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-10%);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
 
 /* Título Modal */
 .modal h2 {
@@ -188,4 +177,146 @@ input:disabled + .slider {
 
 input:disabled + .slider:before {
   background-color: #bbb;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Modal Overlay: Fijo y centrado en pantalla */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+/* Modal: Altura y tamaño responsive */
+.modal {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+  max-width: 90vw;  /* No excede el 90% del ancho de la pantalla */
+  width: 600px; /* Tamaño base */
+  max-height: 80vh; /* Nunca ocupará más del 80% de la altura total */
+  overflow-y: auto; /* Desplazamiento interno si el contenido es muy grande */
+  text-align: center;
+  animation: fadeIn 0.3s ease-out;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Título Modal */
+.modal h2 {
+  color: #4CAF50;
+  margin-bottom: 20px;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+/* Botón de Cerrar */
+.btn-close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+/* Contenido del Modal */
+.modal p {
+  color: #555;
+  margin-bottom: 15px;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+/* Carrusel de imágenes */
+.carousel {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  margin: 20px 0;
+  padding: 10px;
+  justify-content: center;
+  width: 100%;
+}
+
+.carousel-slide {
+  scroll-snap-align: center;
+  flex: none;
+  max-width: 350px;
+  margin: 0 15px;
+}
+
+.carousel-slide img {
+  width: 100%;
+  height: 200px;
+  border-radius: 8px;
+  object-fit: cover;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Botón de Registro */
+.btn-registrar {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+  margin-top: 20px;
+}
+
+.btn-registrar:hover {
+  background-color: #45a049;
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+  .modal {
+    width: 90%;
+    max-width: 100%;
+    padding: 20px;
+  }
+
+  .modal h2 {
+    font-size: 22px;
+  }
+
+  .carousel-slide {
+    max-width: 250px;
+  }
+
+  .carousel-slide img {
+    height: 150px;
+  }
+}
+
+@media (max-width: 600px) {
+  .modal {
+    max-width: 95%;
+    padding: 15px;
+  }
 }

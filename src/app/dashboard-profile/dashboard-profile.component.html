@@ -24,18 +24,13 @@
       <button class="imc_btn" (click)="openIMCModal()">Calcular IMC</button>
     </div>
 
-    <!-- Card Tus Actividades -->
-    <div class="card">
-      <h3>Tus Actividades</h3>
-      <p>Revisa tu historial de actividades.</p>
-      <ul *ngIf="actividades.length > 0">
-        <li *ngFor="let actividad of actividades">
-          <a [routerLink]="['/actividad', actividad.actividad]">
-            {{ actividad.actividad.nombre }} </a>
-        </li>
-      </ul>
-      <p *ngIf="actividades.length === 0">No tienes actividades asociadas.</p>
+    <div *ngFor="let actividad of actividades">
+      <button (click)="verActividad(actividad)">
+        {{ actividad.actividad }}
+      </button>
     </div>
+    
+    
     <!-- Botón Cerrar sesión -->
     <button class="logout_btn" (click)="logout()">Cerrar sesión</button>
   </div>
